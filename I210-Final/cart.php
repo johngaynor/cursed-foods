@@ -62,3 +62,8 @@ $cart = $_SESSION['cart'];
     </div>
     <a href='checkout.php' class='checkoutBtn'>Checkout</a>
 </section>
+
+<?php
+
+// include the header
+include ('includes/footer.php');
