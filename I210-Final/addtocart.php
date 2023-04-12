@@ -51,6 +51,6 @@ if (array_key_exists($id, $cart)) {
 // update session variable cart.
 $_SESSION['cart'] = $cart;
 
-// redirect to showcart.php page.
-header('Location: showcart.php');
+// redirect to cart.php page.
+header('Location: cart.php');
 ?>
