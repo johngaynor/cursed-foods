@@ -20,7 +20,21 @@ $user_terms = filter_input(INPUT_GET, 'terms', FILTER_UNSAFE_RAW);
 $delimiter = ' ';
 $terms = explode($delimiter, $user_terms);
 
+// defining the query
 $sql = "SELECT * FROM items WHERE 0";
 foreach ($terms as $term) {
     $sql .= " AND title LIKE '%$term%'";
+}
+
+//execute the query
+$query = $conn->query($sql);
+
+//Handle selection errors
+if (!$query) {
+    $errno = $conn->errno;
+    $errmsg = $conn->error;
+    echo "Selection failed with: ($errno) $errmsg.";
+    $conn->close();
+    include ('includes/footer.php');
+    exit;
 }
