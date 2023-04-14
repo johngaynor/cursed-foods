@@ -34,6 +34,7 @@ if (!$query) {
                 echo "<img src='images/", $row['image'], "' alt='' />";
                 echo "<div class='food-text'>";
                 echo "<h2>", $row['item_name'], "</h2>";
+                echo "<h4>", $row['category_name'], "</h4>";
                 echo "<p>", $row['description'], "</p>";
                 echo "</div>";
                 echo "<a href='menu-details.php?id=", $row['item_id'], "'>View Details</a>";

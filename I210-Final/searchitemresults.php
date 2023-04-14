@@ -35,15 +35,32 @@ if (!$query) {
     exit;
 }
 
-//insert a row into the table for each row of data
-while (($row = $query->fetch_assoc()) !== NULL) {
-    echo "<p>", $row['item_name'], "</p><br>";
-}
-?>
-
-
-
-
-
+    //display results in a table
+    if ($query->num_rows == 0)
+    echo "Your search <i>'$user_terms'</i> did not match any items in our inventory";
+    else {
+    ?>
+        <section class="menu-display">
+            <div class="food-wrapper">
+        <?php
+        //insert a food item for each row in the query
+            while (($row = $query->fetch_assoc()) !== null) {
+                echo "<div class='food'>";
+                echo "<img src='images/", $row['image'], "' alt='' />";
+                echo "<div class='food-text'>";
+                echo "<h2>", $row['item_name'], "</h2>";
+                echo "<p>", $row['description'], "</p>";
+                echo "</div>";
+                echo "<a href='menu-details.php?id=", $row['item_id'], "'>View Details</a>";
+                echo "</div>";
+            }
+        ?>
+            </div>
+        </section>
 <?php
+}
+
+// clean up results and close the connection
+$query->close();
+$conn->close();
 include 'includes/footer.php';

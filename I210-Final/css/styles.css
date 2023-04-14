@@ -146,12 +146,14 @@ nav a span {
     border-radius: 20px 20px;
     /*background-color: #33CC00;*/
 }
-.food-text h2 {
+.food-text h4 {
     padding-bottom: 12px;
 }
+
 .food-text {
     margin-bottom: 32px;
 }
+
 .food a{
     border: none;
     background-color: #7371FC;
