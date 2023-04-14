@@ -1,7 +1,5 @@
 <?php
 
-// this is the file for searching items and returning results
-
 // include header and database
 include 'includes/header.php';
 include 'includes/database.php';
@@ -11,6 +9,14 @@ if (!filter_has_var(INPUT_GET, 'terms')) {
     echo "Error: no search terms were found.";
     require_once ('includes/footer.php');
     exit();
+}
+
+if (filter_has_var(INPUT_GET, "terms")) {
+    $terms_str = filter_input(INPUT_GET, 'terms', FILTER_SANITIZE_STRING);
+} else {
+    echo "There was not search terms found.";
+    include ('includes/footer.php');
+    exit;
 }
 
 // retrieve search keywords from GET and sanitizing it
