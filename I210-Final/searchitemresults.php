@@ -19,3 +19,8 @@ $user_terms = filter_input(INPUT_GET, 'terms', FILTER_UNSAFE_RAW);
 // $delimiter denotes what to separate a string by, explode returns an array of values separated by the delimiter
 $delimiter = ' ';
 $terms = explode($delimiter, $user_terms);
+
+$sql = "SELECT * FROM items WHERE 0";
+foreach ($terms as $term) {
+    $sql .= " AND title LIKE '%$term%'";
+}
