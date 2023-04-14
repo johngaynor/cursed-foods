@@ -16,7 +16,7 @@ $item_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 // define & execute the query
 $sql = "
-SELECT i.item_id, i.item_name, i.item_price, i.description, i.image, c.category_name 
+SELECT i.item_id, i.item_name, i.item_price, i.description, i.image, c.category_name, c.category_id
 FROM items as i
 INNER JOIN categories as c
 ON i.category_id = c.category_id
@@ -38,10 +38,24 @@ if (!$query) {
 <section class="details">
         <?php
         while (($row = $query->fetch_assoc()) !== null) {
+            // setting category color
+            $category = $row['category_id'];
+            if ($category == 1) {
+                $category_color = "#69B34C";
+            } else if ($category == 2) {
+                $category_color = "#FAB733";
+            } else if ($category == 3) {
+                $category_color = "#FF8E15";
+            } else if ($category == 4) {
+                $category_color = "#FF4E11";
+            } else if ($category == 5) {
+                $category_color = "#FF0D0D";
+            }
+
             echo "<div class='item-desc'>";
             echo "<h1 id='detailHeader'>", $row['item_name'], "</h1>";
-            echo "<p class='category'><span>Category: </span>", $row['category_name'], "</p>";
-            echo "<p class='price'><span>Price: </span><span>$</span>", $row['item_price'], "</p>";
+            echo "<p class='category' style='color: $category_color'><span style='color: black'>Category: </span>", $row['category_name'], "</p>";
+            echo "<p class='price'><span>Price: </span>$", $row['item_price'], "</p>";
             echo "<p class='desc'>";
             echo "<span>Description: </span>", $row['description'], "</p>";
             echo "<div class='item-quantity'>";

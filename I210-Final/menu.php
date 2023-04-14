@@ -52,7 +52,6 @@ if (!$query) {
     require_once ('includes/footer.php');
     exit;
 }
-
 ?>
     <h1 id="menuHeader">Take a look at our most cursed menu items!</h1>
     <form method="POST" action="sortmenu.php" style="padding-top: 20px">
@@ -70,11 +69,25 @@ if (!$query) {
             <?php
             // while loop to show all items
             while (($row = $query->fetch_assoc()) !== null) {
+                // setting category color
+                $category = $row['category_id'];
+                if ($category == 1) {
+                    $category_color = "#69B34C";
+                } else if ($category == 2) {
+                    $category_color = "#FAB733";
+                } else if ($category == 3) {
+                    $category_color = "#FF8E15";
+                } else if ($category == 4) {
+                    $category_color = "#FF4E11";
+                } else if ($category == 5) {
+                    $category_color = "#FF0D0D";
+                }
+
                 echo "<div class='food'>";
                 echo "<img src='images/", $row['image'], "' alt='' />";
                 echo "<div class='food-text'>";
                 echo "<h2>", $row['item_name'], "</h2>";
-                echo "<h3>", $row['category_name'], "</h3>";
+                echo "<h3 style='color: $category_color'>", $row['category_name'], "</h3>";
                 echo "<h4>$", $row['item_price'], "</h4>";
                 echo "<p>", $row['description'], "</p>";
                 echo "</div>";
