@@ -154,7 +154,7 @@ nav a span {
     margin-bottom: 32px;
 }
 
-.food a{
+.food a, .search-back{
     border: none;
     background-color: #7371FC;
     color: white;
@@ -448,3 +448,7 @@ footer h6 {
     width: 60%;
 }
 /*!FOOTER */
+
+.search-highlight {
+    background-color: rgba(115, 113, 252, .5)
+}
