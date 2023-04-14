@@ -18,7 +18,7 @@ $terms = explode($delimiter, $user_terms);
 
 // defining the query
 $sql = "
-SELECT i.item_id, i.item_name, i.item_price, i.image, i.description, c.category_name 
+SELECT i.item_id, i.item_name, i.item_price, i.image, i.description, c.category_name, c.category_id 
 FROM items as i
 INNER JOIN categories as c
 ON i.category_id = c.category_id
@@ -122,6 +122,20 @@ if (!$query) {
 //                    }
 //                }
 
+                // setting category color
+                $category = $row['category_id'];
+                if ($category == 1) {
+                    $category_color = "#69B34C";
+                } else if ($category == 2) {
+                    $category_color = "#FAB733";
+                } else if ($category == 3) {
+                    $category_color = "#FF8E15";
+                } else if ($category == 4) {
+                    $category_color = "#FF4E11";
+                } else if ($category == 5) {
+                    $category_color = "#FF0D0D";
+                }
+
 
                 echo "<div class='food'>";
                 echo "<img src='images/", $row['image'], "' alt='' />";
@@ -129,7 +143,7 @@ if (!$query) {
                 echo "<h2>";
                 echo $new_name;
                 echo "</h2>";
-                echo "<h3>", $row['category_name'], "</h3>";
+                echo "<h3 style='color: $category_color'>", $row['category_name'], "</h3>";
                 echo "<h4>$", $row['item_price'], "</h4>";
                 echo "<p>", $row['description'], "</p>";
                 echo "</div>";
