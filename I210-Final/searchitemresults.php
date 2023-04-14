@@ -12,3 +12,10 @@ if (!filter_has_var(INPUT_GET, 'terms')) {
     require_once ('includes/footer.php');
     exit();
 }
+
+// retrieve search keywords from GET and sanitizing it
+$user_terms = filter_input(INPUT_GET, 'terms', FILTER_UNSAFE_RAW);
+
+// $delimiter denotes what to separate a string by, explode returns an array of values separated by the delimiter
+$delimiter = ' ';
+$terms = explode($delimiter, $user_terms);
