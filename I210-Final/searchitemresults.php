@@ -39,7 +39,11 @@ if (!$query) {
 while (($row = $query->fetch_assoc()) !== NULL) {
     echo "<p>", $row['item_name'], "</p><br>";
 }
+?>
 
 
 
 
+
+<?php
+include 'includes/footer.php';

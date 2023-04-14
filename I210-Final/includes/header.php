@@ -42,7 +42,7 @@ if (isset($_SESSION['cart'])) {
             <a href="">About Us</a>
             <a href="">Contact Us</a>
             <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-            <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="searchitems.php"><i class="fa-solid fa-magnifying-glass"></i></a>
             <a href="login.php"
             ><img src="images/account-placeholder.png" alt=""
                 /></a>
