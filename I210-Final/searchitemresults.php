@@ -17,9 +17,9 @@ $delimiter = ' ';
 $terms = explode($delimiter, $user_terms);
 
 // defining the query
-$sql = "SELECT * FROM items WHERE 0";
+$sql = "SELECT * FROM items WHERE item_id>0";
 foreach ($terms as $term) {
-    $sql .= " AND title LIKE '%$term%'";
+    $sql .= " AND item_name LIKE '%$term%'";
 }
 
 //execute the query
@@ -34,5 +34,12 @@ if (!$query) {
     include ('includes/footer.php');
     exit;
 }
+
+//insert a row into the table for each row of data
+while (($row = $query->fetch_assoc()) !== NULL) {
+    echo "<p>", $row['item_name'], "</p><br>";
+}
+
+
 
 
