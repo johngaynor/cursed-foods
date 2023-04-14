@@ -5,7 +5,7 @@ include 'includes/database.php';
 
 // checking to see if cart is empty.
 if (!isset($_SESSION['cart']) || !$_SESSION['cart']) {
-    echo "Your shopping cart is empty.<br><br>";
+    echo "<p style='padding-top: 50px'>Your shopping cart is empty.</p><br><br>";
     include ('includes/footer.php');
     exit();
 }

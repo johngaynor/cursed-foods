@@ -25,6 +25,14 @@ if (!$query) {
 
 ?>
     <h1 id="menuHeader">Take a look at our most cursed menu items!</h1>
+    <form method="POST" action="sortmenu.php">
+        Sort by:
+        <select name="sort_by" onchange="this.form.submit()">
+            <option value="" disabled selected>--select--</option>
+            <option value="cursed_asc">Less to Most Cursed</option>
+            <option value="cursed_desc">Most to Less Cursed</option>
+        </select>
+    </form>
     <section class="menu-display">
         <div class="food-wrapper">
             <?php
