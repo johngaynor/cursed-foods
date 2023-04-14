@@ -1,26 +1,16 @@
 <?php
-
 // include header and database
 include 'includes/header.php';
 include 'includes/database.php';
 
-// checking to see if any keywords exist in GET and handling errors accordingly
-if (!filter_has_var(INPUT_GET, 'terms')) {
-    echo "Error: no search terms were found.";
-    require_once ('includes/footer.php');
-    exit();
-}
-
+// retrieve keywords from GET, if none exist throw an error message
 if (filter_has_var(INPUT_GET, "terms")) {
-    $terms_str = filter_input(INPUT_GET, 'terms', FILTER_SANITIZE_STRING);
+    $user_terms = filter_input(INPUT_GET, 'terms', FILTER_UNSAFE_RAW);
 } else {
-    echo "There was not search terms found.";
+    echo "Error: no search terms were found.";
     include ('includes/footer.php');
     exit;
 }
-
-// retrieve search keywords from GET and sanitizing it
-$user_terms = filter_input(INPUT_GET, 'terms', FILTER_UNSAFE_RAW);
 
 // $delimiter denotes what to separate a string by, explode returns an array of values separated by the delimiter
 $delimiter = ' ';
@@ -44,3 +34,5 @@ if (!$query) {
     include ('includes/footer.php');
     exit;
 }
+
+
