@@ -1,10 +1,10 @@
 * {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 html, body {
- height: 100%;
+    height: 100%;
 }
 
 .site-wrapper {
@@ -136,10 +136,15 @@ nav a span {
 .food {
     max-width: 350px;
     width: 100%;
+    margin-bottom: 100px;
 }
 .food img {
-    width: inherit;
+    max-width: 350px;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
     border-radius: 20px 20px;
+    /*background-color: #33CC00;*/
 }
 .food-text h2 {
     padding-bottom: 12px;
@@ -190,12 +195,13 @@ nav a span {
     width: 53%;
     min-height: 400px;
     object-fit: cover;
+    /*background-color: red;*/
 }
 .item-quantity {
-position: absolute;
-bottom: 0;
-display: flex;
-align-items: center;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
 }
 .addBtn {
     width: 150px;

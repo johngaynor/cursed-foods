@@ -47,8 +47,8 @@ if (!$query) {
             echo "<div class='item-quantity'>";
             echo "<form action='addtocart.php?id=5' method='get'>";
             echo "<input type='hidden' name='id' value='", $row['item_id'], "' />";
-            echo "<input class='item-number' name='qty' type='number' value='1' />";
             echo "<button class='addBtn' type='submit'>+ Add to Cart</button>";
+            echo "<input class='item-number' name='qty' type='number' value='1' />";
             echo "</form>";
             echo "</div>";
             echo "</div>";
