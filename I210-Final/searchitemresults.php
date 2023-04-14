@@ -129,7 +129,8 @@ if (!$query) {
                 echo "<h2>";
                 echo $new_name;
                 echo "</h2>";
-                echo "<h4>", $row['category_name'], "</h4>";
+                echo "<h3>", $row['category_name'], "</h3>";
+                echo "<h4>$", $row['item_price'], "</h4>";
                 echo "<p>", $row['description'], "</p>";
                 echo "</div>";
                 echo "<a href='menu-details.php?id=", $row['item_id'], "'>View Details</a>";
