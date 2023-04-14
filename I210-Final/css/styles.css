@@ -43,6 +43,18 @@ nav a span {
     font-weight: 700;
 }
 
+nav form {
+    /*background-color: red;*/
+    /*color: red;*/
+}
+
+nav form button {
+    background-color: white;
+    border: 0px;
+    margin-left: -8px;
+    cursor: pointer;
+}
+
 /*! HOME PAGE "index.html" */
 
 .hero {

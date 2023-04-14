@@ -44,7 +44,7 @@ if (!$query) {
     //display results in a table
     if ($query->num_rows == 0)
     echo "<p style='font-size:30px; padding:25px'>Your search <strong>'$user_terms'</strong> did not match any items in our inventory.</p><br>
-    <a href='searchitems.php' style='margin:25px' class='search-back'>Go Back</a>
+    <a href='menu.php' style='margin:25px' class='search-back'>Go Back</a>
 ";
     else {
     ?>
