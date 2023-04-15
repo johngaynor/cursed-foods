@@ -31,4 +31,8 @@ if ($query->num_rows) {
     $_SESSION['login_status'] = 1;
 }
 
-echo $username, " ", $password;
+//close the connection
+$conn->close();
+
+//redirect to the loginform.php page
+header("Location: loginform.php");
