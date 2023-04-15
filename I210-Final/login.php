@@ -11,3 +11,12 @@ if (session_status() == PHP_SESSION_NONE) {
 //create variable login status.
 $_SESSION['login_status'] = 2;
 $username = $passcode = "";
+
+//retrieve user name and password from the form in the login form
+if (filter_has_var(INPUT_POST, 'username') || filter_has_var(INPUT_POST, 'password')) {
+    $username = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'username', FILTER_UNSAFE_RAW)));
+    $password = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'password', FILTER_UNSAFE_RAW)));
+}
+
+//validate user name and password against a record in the users table in the database. If they are valid, create session variables.
+$sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
