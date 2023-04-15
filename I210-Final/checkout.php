@@ -3,6 +3,14 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+// prompting user to log in if they aren't already
+if (!isset($_SESSION['login'])) {
+    header('Location: loginform.php');
+    exit();
+}
+
+
 // empty the shopping cart
 $_SESSION['cart'] = [];
 
