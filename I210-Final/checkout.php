@@ -57,7 +57,8 @@ $cart = $_SESSION['cart'];
 foreach(array_keys($cart) as $item_id) {
     echo "item_id = '$item_id'<br>";
     echo "item_qty = '$cart[$item_id]'";
-//    $sql3 = "INSERT INTO orderDetails"
+    $sql3 = "INSERT INTO orderDetails VALUES (NULL, $last_order_id, $item_id, $cart[$item_id])";
+    $query3 = $conn->query($sql3);
 }
 
 //$sql3 = "SELECT LAST_INSERT_ID()";
