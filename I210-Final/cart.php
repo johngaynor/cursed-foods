@@ -25,9 +25,6 @@ $cart = $_SESSION['cart'];
     }
     $query = $conn->query($sql);
 
-//    foreach(array_keys($cart) as $id) {
-//        $sql .= " OR item_id=$id";
-//    }
 
     $total_price = 0;
 
