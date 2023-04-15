@@ -8,14 +8,14 @@ include 'includes/database.php';
 <h1 class="loginHeader">Welcome back! Please login to your account.</h1>
 
 <section class="login">
-    <form class="login-form" method="post" action="loginform.php">
+    <form class="login-form" method="post" action="login.php">
         <div class="login-inputs">
             <i class="fa-solid fa-user"></i>
-            <input type="text" placeholder="Username or Email" />
+            <input type="text" placeholder="Username" name="username" />
         </div>
         <div class="login-inputs">
             <i class="fa-solid fa-lock"></i>
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" name="password" />
         </div>
         <div class="login-buttons">
             <button class="loginBtn" type="submit">Login</button>

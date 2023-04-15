@@ -19,4 +19,16 @@ if (filter_has_var(INPUT_POST, 'username') || filter_has_var(INPUT_POST, 'passwo
 }
 
 //validate user name and password against a record in the users table in the database. If they are valid, create session variables.
-$sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+$sql = "SELECT * FROM users WHERE user_name='$username' AND password='$password'";
+
+$query = @$conn->query($sql);
+if ($query->num_rows) {
+    // there is a valid user, store user details in session variables.
+    $row = $query->fetch_assoc();
+    $_SESSION['login'] = $username;
+    $_SESSION['role'] = $row['role'];
+    $_SESSION['name'] = $row['firstname'] . " " . $row['lastname'];
+    $_SESSION['login_status'] = 1;
+}
+
+echo $username, " ", $password;
