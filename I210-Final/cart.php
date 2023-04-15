@@ -25,9 +25,9 @@ $cart = $_SESSION['cart'];
     }
     $query = $conn->query($sql);
 
-    foreach(array_keys($cart) as $id) {
-        $sql .= " OR item_id=$id";
-    }
+//    foreach(array_keys($cart) as $id) {
+//        $sql .= " OR item_id=$id";
+//    }
 
     $total_price = 0;
 
@@ -60,7 +60,7 @@ $cart = $_SESSION['cart'];
         <h2>Total:</h2>
         <p>$<?= $total_price ?></p>
     </div>
-    <a href='checkout.php' class='checkoutBtn'>Checkout</a>
+    <a href='checkout.php?total_price=<?= $total_price ?>' class='checkoutBtn'>Checkout</a>
 </section>
 
 <?php
