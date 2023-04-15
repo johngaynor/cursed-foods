@@ -26,6 +26,7 @@ if (filter_has_var(INPUT_GET, 'total_price')) {
     exit;
 }
 
+// retrieving the user's id
 $sql1 = "SELECT user_id FROM users WHERE user_name='$login'";
 $query1 = $conn->query($sql1);
 
@@ -34,9 +35,9 @@ while ($row = $query1->fetch_assoc()) {
     $user_id = $row['user_id'];
 }
 
-//echo $user_id;
 $query1->close();
 
+// creating an order
 $sql2 = "INSERT INTO orders VALUES (NULL, $user_id, $total_price, CURRENT_TIMESTAMP)";
 $query2 = $conn->query($sql2);
 
@@ -50,10 +51,11 @@ if (!$query2) {
     exit;
 }
 
+// retrieve the order_id (that was auto incremented)
 $last_order_id = mysqli_insert_id($conn);
-//echo $last_order_id;
-
 $cart = $_SESSION['cart'];
+
+// inserting a row for each item to be stored in orderDetails
 foreach(array_keys($cart) as $item_id) {
     echo "item_id = '$item_id'<br>";
     echo "item_qty = '$cart[$item_id]'";
@@ -61,13 +63,7 @@ foreach(array_keys($cart) as $item_id) {
     $query3 = $conn->query($sql3);
 }
 
-//$sql3 = "SELECT LAST_INSERT_ID()";
-//$query3 = $conn->query($sql3);
-//echo $query3;
-
-// orderDetails stores the orderID(foreign), item_id(foreign), and qty
-
-// empty the shopping cart
+// empty cart
 $_SESSION['cart'] = [];
 ?>
 
@@ -76,6 +72,5 @@ $_SESSION['cart'] = [];
 
 <?php
 include ('includes/footer.php');
-//$query2->close();
 $conn->close();
 ?>
