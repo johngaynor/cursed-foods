@@ -3,6 +3,33 @@
 include 'includes/header.php';
 include 'includes/database.php';
 
+//check the login status
+$login_status = '';
+if (isset($_SESSION['login_status'])) {
+    $login_status = $_SESSION['login_status'];
+}
+
+// if successful login
+if ($login_status == 1) {
+    echo "<p>You are logged in as " . $_SESSION['login'] . ".</p>";
+    echo "<a href='logout.php'>Log out</a><br />";
+    include ('includes/footer.php');
+    exit();
+}
+
+// if new user
+if ($login_status == 3) {
+    echo "<p>Thank you for registering with us. Your account has been created.</p>";
+    echo "<a href='logout.php'>Log out</a><br />";
+    include ('includes/footer.php');
+    exit();
+}
+
+//the user's last login attempt failed
+if($login_status == 2) {
+    echo "Username or password invalid. Please try again.";
+}
+
 ?>
 
 <h1 class="loginHeader">Welcome back! Please login to your account.</h1>
