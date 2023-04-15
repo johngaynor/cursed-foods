@@ -51,7 +51,14 @@ if (!$query2) {
 }
 
 $last_order_id = mysqli_insert_id($conn);
-echo $last_order_id;
+//echo $last_order_id;
+
+$cart = $_SESSION['cart'];
+foreach(array_keys($cart) as $item_id) {
+    echo "item_id = '$item_id'<br>";
+    echo "item_qty = '$cart[$item_id]'";
+//    $sql3 = "INSERT INTO orderDetails"
+}
 
 //$sql3 = "SELECT LAST_INSERT_ID()";
 //$query3 = $conn->query($sql3);
