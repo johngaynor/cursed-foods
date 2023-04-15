@@ -46,7 +46,7 @@ if (isset($_SESSION['cart'])) {
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-            <a href="login.php"
+            <a href="loginform.php"
             ><img src="images/account-placeholder.png" alt=""
                 /></a>
         </nav>
