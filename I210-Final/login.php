@@ -1,4 +1,8 @@
 <?php
+// the login statuses are as follows:
+// 2: unsuccessful login
+// 1: successful login
+// 3: new user
 
 //include code from database.php
 require_once('includes/database.php');

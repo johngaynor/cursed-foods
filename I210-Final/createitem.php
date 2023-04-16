@@ -1,4 +1,18 @@
 <?php
+// include the header
+include 'includes/header.php';
+
+//start session if it has not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// checking to see if the user has permission to add items. Role 1 is regular users, 2 is admin.
+if ($_SESSION['role'] !== 2) {
+    echo "You do not have permissions to add a new item.";
+    include 'includes/footer.php';
+    exit();
+}
 
 // checking to see if the required inputs are there and, if not, ending the script
 if(!filter_has_var(INPUT_POST, 'category_id') ||
@@ -44,7 +58,6 @@ $query->close();
 $conn->close();
 
 // display the content on the page
-include 'includes/header.php';
 echo "Your item has been created. View it in the gallery below:<br>";
 echo "<a href='menu.php'>click here</a>";
 include 'includes/footer.php';
