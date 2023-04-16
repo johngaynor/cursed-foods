@@ -39,7 +39,14 @@ if (!$query) {
     die();
 }
 
+// close query/connection
+$query->close();
 $conn->close();
 
+// display the content on the page
+include 'includes/header.php';
+echo "Your item has been created. View it in the gallery below:<br>";
+echo "<a href='menu.php'>click here</a>";
+include 'includes/footer.php';
 
 
