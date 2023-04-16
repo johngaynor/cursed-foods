@@ -27,7 +27,7 @@ $sql = "INSERT INTO users VALUES (NULL, '$firstname', '$lastname', '$username', 
 //execut the insert query
 $query = @$conn->query($sql);
 
-//Handle selection errors
+//Handle insert errors
 if (!$query) {
     $errno = $conn->errno;
     $error = $conn->error;
