@@ -43,16 +43,43 @@ nav a span {
     font-weight: 700;
 }
 
-nav form {
-    /*background-color: red;*/
-    /*color: red;*/
-}
-
 nav form button {
     background-color: white;
     border: 0px;
     margin-left: -8px;
     cursor: pointer;
+}
+
+.profile-container {
+    position: relative;
+    border-radius: 10px;
+    width: 150px;
+    text-align: end;
+    padding: 10px;
+
+}
+
+nav .profile-dropdown {
+    position: absolute;
+    width: 150px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    visibility: hidden;
+}
+
+nav .profile-dropdown a {
+    padding: 15px;
+    color: white;
+}
+
+.profile-container:hover {
+    background-color: #7371FC;
+}
+
+.profile-container:hover .profile-dropdown {
+    visibility: initial;
 }
 
 /*! HOME PAGE "index.html" */

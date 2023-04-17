@@ -63,11 +63,11 @@ if (!isset($_SESSION['login_status'])) {
 //                echo "<a href='loginform.php'>Login</a>";
 //            }
 //            ?>
-            <div style="background-color: red;">
+            <div class="profile-container">
                 <a href='loginform.php'><img src='images/account-placeholder.png'' alt=''/></a>
-                <div class="profile-dropdown">
-                    <a href='additem.php'></a>
-                    <a href='userprofile.php'></a>
+                <div class="profile-dropdown" style="background-color: blue;">
+                    <a href='additem.php'>add item</a>
+                    <a href='userprofile.php'>user profile</a>
                 </div>
             </div>
         </nav>
