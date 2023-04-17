@@ -33,10 +33,6 @@ if (!$query) {
     require_once ('includes/footer.php');
     exit;
 }
-
-if (isset($_SESSION['role']))
-
-
 ?>
 
 <section class="details">
@@ -57,7 +53,13 @@ if (isset($_SESSION['role']))
             }
 
             echo "<div class='item-desc'>";
-            echo "<h1 id='detailHeader'>", $row['item_name'], "</h1>";
+            echo "<h1 id='detailHeader'>", $row['item_name'];
+            if (isset($_SESSION['role'])) {
+                if ($_SESSION['role'] == 2) {
+                    echo "<a href='edititemform.php?id=", $row['item_id'], "' style='color: #7371FC; margin-left: 10px'><i class='fa-solid fa-pen-to-square'></i></a>";
+                }
+            }
+             echo "</h1>";
             echo "<p class='category' style='color: $category_color'><span style='color: black'>Category: </span>", $row['category_name'], "</p>";
             echo "<p class='price'><span>Price: </span>$", $row['item_price'], "</p>";
             echo "<p class='desc'>";
