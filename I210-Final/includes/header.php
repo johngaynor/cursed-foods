@@ -9,8 +9,6 @@ if (session_status() == PHP_SESSION_NONE) {
 if (isset($_SESSION['cart'])) {
     $cart = $_SESSION['cart'];
 }
-
-include 'database.php';
 ?>
 
 <!DOCTYPE html>
@@ -57,16 +55,9 @@ include 'database.php';
                     echo "<a href='userprofile.php'>Profile Settings</a>";
                     echo "<a href='logout.php'>Logout</a>";
 
-                    $username = $_SESSION['login'];
-                    $sql = "SELECT role FROM users WHERE user_name='$username'";
-                    $query = @$conn->query($sql);
-                    while ($row = $query->fetch_assoc()) {
-                        $role = $row['role'];
-
-                        if ($role == 2) {
+                        if ($_SESSION['role'] == 2) {
                             echo "<a href='createitemform.php'>Add an Item</a>";
                         }
-                    }
                     echo "</div></div>";
                 } else {
                     echo "<a href='loginform.php'>Login</a>";
@@ -75,14 +66,6 @@ include 'database.php';
                 echo "<a href='loginform.php'>Login</a>";
             }
             ?>
-<!--            <div class="profile-container">-->
-<!--                <a href='loginform.php'><img src='images/account-placeholder.png'' alt=''/></a>-->
-<!--                <div class='profile-dropdown'>-->
-<!--                    <a href='userprofile.php'>Profile Settings</a>-->
-<!--                    <a href='logout.php'>Logout</a>-->
-<!--                    <a href='additem.php'>Add an Item</a>-->
-<!--                </div>-->
-<!--            </div>-->
         </nav>
     </header>
 

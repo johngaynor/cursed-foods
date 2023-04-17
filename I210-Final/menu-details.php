@@ -33,6 +33,10 @@ if (!$query) {
     require_once ('includes/footer.php');
     exit;
 }
+
+if (isset($_SESSION['role']))
+
+
 ?>
 
 <section class="details">
