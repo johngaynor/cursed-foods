@@ -10,10 +10,7 @@ if (isset($_SESSION['cart'])) {
     $cart = $_SESSION['cart'];
 }
 
-if (!isset($_SESSION['login_status'])) {
-//    $login_status = $_SESSION['login_status'];
-//    $_SESSION['login_status'] = 2;
-}
+include 'database.php';
 ?>
 
 <!DOCTYPE html>
@@ -51,25 +48,41 @@ if (!isset($_SESSION['login_status'])) {
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-<!--            --><?php
-//            if (isset($_SESSION['login_status'])) {
-//                if ($_SESSION['login_status'] == 1) {
-//                    echo "<div>
-//<a href='loginform.php'><img src='images/account-placeholder.png'' alt=''/></a></div>";
-//                } else {
-//                    echo "<a href='loginform.php'>Login</a>";
-//                }
-//            } else {
-//                echo "<a href='loginform.php'>Login</a>";
-//            }
-//            ?>
-            <div class="profile-container">
-                <a href='loginform.php'><img src='images/account-placeholder.png'' alt=''/></a>
-                <div class="profile-dropdown" style="background-color: blue;">
-                    <a href='additem.php'>add item</a>
-                    <a href='userprofile.php'>user profile</a>
-                </div>
-            </div>
+            <?php
+            if (isset($_SESSION['login_status'])) {
+                if ($_SESSION['login_status'] == 1) {
+                    echo "<div class='profile-container'>";
+                    echo "<a href='loginform.php'><img src='images/account-placeholder.png'' alt=''/></a>";
+                    echo "<div class='profile-dropdown'>";
+                    echo "<a href='userprofile.php'>Profile Settings</a>";
+                    echo "<a href='logout.php'>Logout</a>";
+
+                    $username = $_SESSION['login'];
+                    $sql = "SELECT role FROM users WHERE user_name='$username'";
+                    $query = @$conn->query($sql);
+                    while ($row = $query->fetch_assoc()) {
+                        $role = $row['role'];
+
+                        if ($role == 2) {
+                            echo "<a href='createitem.php'>Add an Item</a>";
+                        }
+                    }
+                    echo "</div></div>";
+                } else {
+                    echo "<a href='loginform.php'>Login</a>";
+                }
+            } else {
+                echo "<a href='loginform.php'>Login</a>";
+            }
+            ?>
+<!--            <div class="profile-container">-->
+<!--                <a href='loginform.php'><img src='images/account-placeholder.png'' alt=''/></a>-->
+<!--                <div class='profile-dropdown'>-->
+<!--                    <a href='userprofile.php'>Profile Settings</a>-->
+<!--                    <a href='logout.php'>Logout</a>-->
+<!--                    <a href='additem.php'>Add an Item</a>-->
+<!--                </div>-->
+<!--            </div>-->
         </nav>
     </header>
 
