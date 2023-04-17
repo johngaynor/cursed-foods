@@ -64,7 +64,7 @@ include 'database.php';
                         $role = $row['role'];
 
                         if ($role == 2) {
-                            echo "<a href='createitem.php'>Add an Item</a>";
+                            echo "<a href='createitemform.php'>Add an Item</a>";
                         }
                     }
                     echo "</div></div>";
