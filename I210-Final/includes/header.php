@@ -51,29 +51,17 @@ if (!isset($_SESSION['login_status'])) {
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-
             <?php
             if (isset($_SESSION['login_status'])) {
-                if ($_SESSION['login_status'] !== 1) {
+                if ($_SESSION['login_status'] == 1) {
                     echo "<a href='loginform.php'><img src='images/account-placeholder.png'' alt=''/></a>";
+                } else {
+                    echo "<a href='loginform.php'>Login</a>";
                 }
-//                } else {
-//                    echo "<a href='loginform.php'>Login</a>";
-//                }
             } else {
                 echo "<a href='loginform.php'>Login</a>";
             }
-
-
-
-
             ?>
-
-<!--            <a href="loginform.php"-->
-<!--            ><img src="images/account-placeholder.png" alt=""-->
-<!--                /></a>-->
-<!--            <a href="loginform.php"-->
-<!--            >Login</a>-->
         </nav>
     </header>
 
