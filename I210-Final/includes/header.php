@@ -9,6 +9,11 @@ if (session_status() == PHP_SESSION_NONE) {
 if (isset($_SESSION['cart'])) {
     $cart = $_SESSION['cart'];
 }
+
+if (!isset($_SESSION['login_status'])) {
+//    $login_status = $_SESSION['login_status'];
+//    $_SESSION['login_status'] = 2;
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,9 +51,29 @@ if (isset($_SESSION['cart'])) {
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-            <a href="loginform.php"
-            ><img src="images/account-placeholder.png" alt=""
-                /></a>
+
+            <?php
+            if (isset($_SESSION['login_status'])) {
+                if ($_SESSION['login_status'] !== 1) {
+                    echo "<a href='loginform.php'><img src='images/account-placeholder.png'' alt=''/></a>";
+                }
+//                } else {
+//                    echo "<a href='loginform.php'>Login</a>";
+//                }
+            } else {
+                echo "<a href='loginform.php'>Login</a>";
+            }
+
+
+
+
+            ?>
+
+<!--            <a href="loginform.php"-->
+<!--            ><img src="images/account-placeholder.png" alt=""-->
+<!--                /></a>-->
+<!--            <a href="loginform.php"-->
+<!--            >Login</a>-->
         </nav>
     </header>
 
