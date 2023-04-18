@@ -48,10 +48,11 @@ while ($row = $query->fetch_assoc()) {
 
 ?>
     <form action="edititem.php" method="post">
+        <input hidden="hidden" name="item_id" value="<?= $item_id ?>" />
 <section class="details">
     <div class='item-desc'>
         <input class="edit-name" id="detailHeader" type="text" name="name" value="<?= $name ?>" style="min-width: 500px" />
-        <p class='price'><span>Item ID: </span><input type="number" style="color: grey; width: 60px" readonly value="<?= $item_id ?>" /></p>
+        <p class='price'><span>Item ID: </span><input type="number" name="price" style="color: grey; width: 60px" readonly value="<?= $item_id ?>" /></p>
         <p class='category' style='color: red'>
             <span style='color: black'>Category: </span>
             <select class='edit-select' name='category'>
@@ -71,7 +72,7 @@ while ($row = $query->fetch_assoc()) {
             ?>
             </select>
         </p>
-        <p class='price'><span>Price: </span><input type="number" name="price" value="<?= $price ?>" /></p>
+        <p class='price'><span>Price: </span><input type="number" step=.01 min=0 name="price" value="<?= $price ?>" /></p>
         <p class="desc"><span>Description: </span></p>
         <textarea name="description" rows="6" cols="70" style="margin-bottom: 60px"><?= $description ?></textarea>
         <div class="item-quantity">
