@@ -493,3 +493,18 @@ footer h6 {
 .search-highlight {
     background-color: rgba(115, 113, 252, .3)
 }
+
+/* EDIT FORM */
+.item-desc input, .item-desc textarea {
+    padding: 5px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+}
+.item-desc .edit-name{
+    font-size: 30px;
+    height: 40px;
+}
+
+.item-desc textarea {
+    margin-top: -50px;
+}
