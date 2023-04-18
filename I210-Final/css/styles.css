@@ -508,3 +508,9 @@ footer h6 {
 .item-desc textarea {
     margin-top: -50px;
 }
+
+.item-desc .edit-select {
+    padding: 5px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+}
