@@ -43,27 +43,26 @@ while ($row = $query->fetch_assoc()) {
     $description = $row['description'];
     $image = $row['image'];
 
-//    echo $description;
 }
 
 ?>
-
+    <form action="edititem.php" method="post">
 <section class="details">
+
     <div class='item-desc'>
         <input class="edit-name" id="detailHeader" type="text" name="name" value="<?= $name ?>" />
         <p class='category' style='color: red'><span style='color: black'>Category: </span></p>
         <p class='price'><span>Price: </span><input type="number" name="price" value="<?= $price ?>" /></p>
         <p class="desc"><span>Description: </span></p>
-        <textarea name="description" rows="7" cols="70"><?= $description ?></textarea>
+        <textarea name="description" rows="6" cols="70"><?= $description ?></textarea>
         <div class="item-quantity">
-            <form action='addtocart.php?id=5' method='get'>
-                <button class='addBtn' type='submit'>+ Save</button>
+                <button class='addBtn' type='submit' style="margin-right: 10px">+ Save</button>
                 <button class="addBtn" type="button" onclick='window.location.href="menu-details.php?id=<?=$item_id?>"'>Cancel</button>
-            </form>
         </div>
     </div>
     <img src='images/snickles.jpeg' />
-</section>
 
+</section>
+    </form>
 <?php
 include 'includes/footer.php';
