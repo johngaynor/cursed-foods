@@ -41,8 +41,8 @@ $cart = $_SESSION['cart'];
         echo "<a class='delete' href='editcart.php?type=decrement&id=", $row['item_id'], "'>-</a>";
         echo "<input class='number' type='number' readonly value='", $cart[$row['item_id']], "' />";
         echo "<a class='add' href='editcart.php?type=increment&id=", $row['item_id'], "'>+</a>";
-        echo "</div>";
         echo "<a href='editcart.php?type=delete&id=", $row['item_id'], "'><i class='fa-regular fa-trash-can'></i></a>";
+        echo "</div>";
         echo "</div>";
 
         $item_total = $row['item_price'] * $cart[$row['item_id']];

@@ -96,7 +96,7 @@ if (!$query) {
                     }
                 }
 
-                // creating the new term with the highlighed background for the proper character
+                // creating the new term with the highlighted background for the proper character
                 $term_str = str_split($item_name);
                 $new_name = '';
                 foreach($term_str as $key=>$term_char) {
