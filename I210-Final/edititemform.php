@@ -5,7 +5,7 @@ include 'includes/database.php';
 
 //check to see if the user has permission to access this page
 if (isset($_SESSION['role'])) {
-    if (!$_SESSION['role'] == 2) {
+    if ($_SESSION['role'] != 2) {
         $error = "You do not have permission to access this page (not admin).";
         header("Location: error.php?m=$error");
         die();
