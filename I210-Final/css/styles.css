@@ -61,11 +61,12 @@ nav form button {
     text-align: end;
     padding: 10px;
     cursor: pointer;
+    margin-right: 50px;
 }
 
 .profile-container img  {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
