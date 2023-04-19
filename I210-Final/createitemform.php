@@ -45,4 +45,5 @@ if (isset($_SESSION['role'])) {
         </form>
     </div>
 <?php
+//include the footer
 include 'includes/footer.php';

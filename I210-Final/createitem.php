@@ -61,11 +61,6 @@ if (!$query) {
 $query->close();
 $conn->close();
 
-// display the content on the page
-//echo "Your item has been created. View it in the gallery below:<br>";
-//echo "<a href='menu.php'>click here</a>";
-//include 'includes/footer.php';
-
 $success = "Your item has been successfully created.";
 header("Location: success.php?m=$success");
 

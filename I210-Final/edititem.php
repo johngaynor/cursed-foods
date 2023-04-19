@@ -45,10 +45,10 @@ $query = @$conn->query($sql);
 if (!$query) {
     $errno = $conn->errno;
     $errmsg = $conn->error;
-    echo "Selection failed with: ($errno) $errmsg<br/>\n";
+    $error = "Selection failed with: ($errno) $errmsg";
     $conn->close();
-    require_once ('includes/footer.php');
-    exit;
+    header("Location: error.php?m=$error");
+    die();
 }
 
 $success = "Your item has been successfully edited.";
