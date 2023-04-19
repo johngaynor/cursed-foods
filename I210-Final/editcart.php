@@ -13,7 +13,7 @@ if (isset($_SESSION['cart'])) {
 
 //if item id cannot be found, terminate script.
 if (!filter_has_var(INPUT_GET, 'id')) {
-    $error = "Item id not found. Operation cannot proceed.<br><br>";
+    $error = "Item id not found. Operation cannot proceed.";
     header("Location: error.php?m=$error");
     die();
 }

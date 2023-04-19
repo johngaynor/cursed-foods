@@ -3,11 +3,11 @@
 include 'includes/header.php';
 include 'includes/database.php';
 
-// checking to see if cart is empty.
+//checking to see if cart is empty.
 if (!isset($_SESSION['cart']) || !$_SESSION['cart']) {
-    echo "<p style='padding-top: 50px'>Your shopping cart is empty.</p><br><br>";
-    include ('includes/footer.php');
-    exit();
+    $error = "Your cart is empty. Please add at least one item before attempting to checkout.";
+    header("Location: error.php?m=$error");
+    die();
 }
 
 //proceed since the cart is not empty--store all session data in cart variable
@@ -18,16 +18,27 @@ $cart = $_SESSION['cart'];
 <section class="cart">
     <?php
 
-    // building and executing sql statement
+    // building and executing sql statement to retrieve all cart items
     $sql = "SELECT item_id, item_name, item_price, image FROM items WHERE 0";
     foreach(array_keys($cart) as $id) {
         $sql .= " OR item_id=$id";
     }
     $query = $conn->query($sql);
 
+    //Handle selection errors
+    if (!$query) {
+        $errno = $conn->errno;
+        $errmsg = $conn->error;
+        $error = "Selection failed with: ($errno) $errmsg";
+        $conn->close();
+        header("Location: error.php?m=$error");
+        die();
+    }
 
+    //initialize total_price variable
     $total_price = 0;
 
+    // loop through all items and display them
     while($row = $query->fetch_assoc()) {
         echo "<div class='cart-item'>";
         echo "<div class='cart-desc'>";
@@ -45,15 +56,16 @@ $cart = $_SESSION['cart'];
         echo "</div>";
         echo "</div>";
 
+        // calculating item_total and adding it to the variable total_price to access later
         $item_total = $row['item_price'] * $cart[$row['item_id']];
         $total_price = $total_price + $item_total;
 
-        // formatting the total price to show decimal places
+        //formatting the total price to show decimal places
         $total_price = number_format($total_price, 2, '.');
     }
+
     ?>
 </section>
-
 <!--this area is for the totals-->
 <section class='checkout'>
     <div class='total'>
@@ -62,8 +74,6 @@ $cart = $_SESSION['cart'];
     </div>
     <a href='checkout.php?total_price=<?= $total_price ?>' class='checkoutBtn'>Checkout</a>
 </section>
-
 <?php
-
 // include the header
 include ('includes/footer.php');
