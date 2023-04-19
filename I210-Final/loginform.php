@@ -46,7 +46,7 @@ if($login_status == 2) {
         </div>
         <div class="login-buttons">
             <button class="loginBtn" type="submit">Login</button>
-            <a href="create.html" class="signup-link">Sign Up</a>
+            <a href="signupform.php" class="signup-link">Sign Up</a>
         </div>
     </form>
     <div class="img-holder"><img src="images/login.png" alt="" /></div>
