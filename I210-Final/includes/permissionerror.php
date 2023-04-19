@@ -1,1 +1,0 @@
-<p style="font-size: 30px">You do not have permission to access this page. </p>
