@@ -47,10 +47,15 @@ if (isset($_SESSION['cart'])) {
             </form>
             <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
             <?php
+            if (!isset($_SESSION['profile_picture']) || $_SESSION['profile_picture'] == null) {
+                $profile_picture = 'images/account-placeholder.png';
+            } else {
+                $profile_picture = $_SESSION['profile_picture'];
+            }
             if (isset($_SESSION['login_status'])) {
                 if ($_SESSION['login_status'] == 1) {
                     echo "<div class='profile-container'>";
-                    echo "<a href='loginform.php'><img src='images/account-placeholder.png'' alt=''/></a>";
+                    echo "<img src='$profile_picture' alt=''/>";
                     echo "<div class='profile-dropdown'>";
                     echo "<a href='userprofile.php'>Profile Settings</a>";
                     echo "<a href='logout.php'>Logout</a>";

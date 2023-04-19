@@ -33,6 +33,7 @@ if ($query->num_rows) {
     $_SESSION['role'] = $row['role'];
     $_SESSION['name'] = $row['firstname'] . " " . $row['lastname'];
     $_SESSION['login_status'] = 1;
+    $_SESSION['profile_picture'] = $row['profile_picture'];
 }
 
 //close the connection

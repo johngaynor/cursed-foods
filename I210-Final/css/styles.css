@@ -60,7 +60,20 @@ nav form button {
     width: 150px;
     text-align: end;
     padding: 10px;
+    cursor: pointer;
+}
 
+.profile-container img  {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 2px solid #7371FC;
+}
+
+.profile-container:hover img {
+    border: 2px solid white;
 }
 
 nav .profile-dropdown {
