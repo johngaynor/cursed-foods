@@ -19,7 +19,7 @@ if (!isset($_SESSION['login'])) {
 
 // retrieving the order total
 if (filter_has_var(INPUT_GET, 'total_price')) {
-    $total_price = filter_input(INPUT_GET, 'total_price', FILTER_SANITIZE_NUMBER_FLOAT);
+    $total_price = filter_input(INPUT_GET, 'total_price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 } else {
     echo "Error: no order total found.";
     include ('includes/footer.php');
@@ -57,8 +57,6 @@ $cart = $_SESSION['cart'];
 
 // inserting a row for each item to be stored in orderDetails
 foreach(array_keys($cart) as $item_id) {
-    echo "item_id = '$item_id'<br>";
-    echo "item_qty = '$cart[$item_id]'";
     $sql3 = "INSERT INTO orderDetails VALUES (NULL, $last_order_id, $item_id, $cart[$item_id])";
     $query3 = $conn->query($sql3);
 }

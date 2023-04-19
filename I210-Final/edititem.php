@@ -10,7 +10,7 @@ if (filter_has_var(INPUT_POST, 'item_id') || filter_has_var(INPUT_POST, 'name') 
     filter_has_var(INPUT_POST, 'description')) {
     $item_id = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'item_id', FILTER_SANITIZE_NUMBER_INT)));
     $name = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'name', FILTER_UNSAFE_RAW)));
-    $price = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT)));
+    $price = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION)));
     $category_id = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT)));
     $description = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'description', FILTER_UNSAFE_RAW)));
 } else {

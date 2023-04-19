@@ -31,7 +31,7 @@ $cart = $_SESSION['cart'];
     while($row = $query->fetch_assoc()) {
         echo "<div class='cart-item'>";
         echo "<div class='cart-desc'>";
-        echo "<img src='images/", $row['image'], "' alt='' />";
+        echo "<img src='", $row['image'], "' alt='' />";
         echo "<div class='cart-item-total'>";
         echo "<h2>", $row['item_name'], "</h2>";
         echo "<h3><span>$</span>", $row['item_price'], "</h3>";
@@ -47,6 +47,9 @@ $cart = $_SESSION['cart'];
 
         $item_total = $row['item_price'] * $cart[$row['item_id']];
         $total_price = $total_price + $item_total;
+
+        // formatting the total price to show decimal places
+        $total_price = number_format($total_price, 2, '.');
     }
     ?>
 </section>
