@@ -97,7 +97,6 @@ if (!$query) {
             ?>
         </div>
     </section>
-
 <?php
 
 // close the query and connection
