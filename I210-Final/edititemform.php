@@ -1,53 +1,59 @@
 <?php
-// include the header and database
+//include the header and database
 include 'includes/header.php';
 include 'includes/database.php';
 
-// check to see if the user has permission to access this page
+//check to see if the user has permission to access this page
 if (isset($_SESSION['role'])) {
-    if ($_SESSION['role'] !== 2) {
-        include 'includes/permissionerror.php';
-        include 'includes/footer.php';
-        exit();
+    if (!$_SESSION['role'] == 2) {
+        $error = "You do not have permission to access this page (not admin).";
+        header("Location: error.php?m=$error");
+        die();
     }
 } else {
-    include 'includes/permissionerror.php';
-    include 'includes/footer.php';
-    exit();
+    $error = "You do not have permission to access this page (not signed in).";
+    header("Location: error.php?m=$error");
+    die();
 }
 
-// handling errors for id
+//if id cannot be found, terminate script.
 if (!filter_has_var(INPUT_GET, 'id')) {
-    echo "Error: item id was not found.";
-    require_once ('includes/footer.php');
-    exit();
+    $error = "ID not found. Operation cannot proceed.";
+    header("Location: error.php?m=$error");
+    die();
 }
 
-// getting the id variable from the url and sanitizing it
+//retrieve id and make sure it is a numeric, positive value.
 $item_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+if (!is_numeric($item_id) || $item_id < 0) {
+    $error = "Invalid ID. Operation cannot proceed.";
+    header("Location: error.php?m=$error");
+    die();
+}
 
-// define & execute the query
-$sql = "
+//define & execute the query
+$sql1 = "
 SELECT i.item_id, i.item_name, i.item_price, i.description, i.image, c.category_name, c.category_id
 FROM items as i
 INNER JOIN categories as c
 ON i.category_id = c.category_id
 WHERE i.item_id = $item_id
 ";
-$query = $conn->query($sql);
+$query1 = $conn->query($sql1);
 
-// Handle selection errors
-if (!$query) {
+//Handle selection errors
+if (!$query1) {
     $errno = $conn->errno;
     $errmsg = $conn->error;
-    echo "Selection failed with: ($errno) $errmsg<br/>\n";
+    $error = "Selection failed with: ($errno) $errmsg";
     $conn->close();
-    require_once ('includes/footer.php');
-    exit;
+    header("Location: error.php?m=$error");
+    die();
 }
 
+//initializing and setting variables for all item information
 $item_id = $name = $category_name = $category_id = $price = $description = $image = '';
-while ($row = $query->fetch_assoc()) {
+while ($row = $query1->fetch_assoc()) {
     $item_id = $row['item_id'];
     $name = $row['item_name'];
     $category_id = $row['category_id'];
@@ -55,9 +61,21 @@ while ($row = $query->fetch_assoc()) {
     $price = $row['item_price'];
     $description = $row['description'];
     $image = $row['image'];
-
 }
 
+//getting the categories to display in the select element
+$sql2 = "SELECT * FROM categories";
+$query2 = @$conn->query($sql2);
+
+//Handle selection errors
+if (!$query2) {
+    $errno = $conn->errno;
+    $errmsg = $conn->error;
+    $error = "Selection failed with: ($errno) $errmsg";
+    $conn->close();
+    header("Location: error.php?m=$error");
+    die();
+}
 ?>
     <form action="edititem.php" method="post">
         <input hidden="hidden" name="item_id" value="<?= $item_id ?>" />
@@ -69,10 +87,6 @@ while ($row = $query->fetch_assoc()) {
             <span style='color: black'>Category: </span>
             <select class='edit-select' name='category'>
             <?php
-            // getting the categories to display in the select element
-            $sql2 = "SELECT * FROM categories";
-            $query2 = @$conn->query($sql2);
-
             // looping through and displaying categories
             while ($row = $query2->fetch_assoc()) {
                 if ($row['category_id'] == $category_id) {
@@ -93,8 +107,15 @@ while ($row = $query->fetch_assoc()) {
         </div>
     </div>
     <img src="<?= $image ?>" />
-
 </section>
     </form>
 <?php
+//include the footer and close queries/connections
 include 'includes/footer.php';
+$query1->close();
+$query2->close();
+$conn->close();
+
+// finished except working on the images
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////

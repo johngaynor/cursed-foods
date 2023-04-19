@@ -1,38 +1,36 @@
 <?php
-// include the header
+//include the header and database
 include 'includes/header.php';
+require_once('includes/database.php');
 
 //start session if it has not already started
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// check to see if the user has permission to access this page
+//check to see if the user has permission to access this page
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] !== 2) {
-        include 'includes/permissionerror.php';
-        include 'includes/footer.php';
-        exit();
+        $error = "You do not have permission to access this page.";
+        header("Location: error.php?m=$error");
+        die();
     }
 } else {
-    include 'includes/permissionerror.php';
-    include 'includes/footer.php';
-    exit();
+    $error = "You do not have permission to access this page.";
+    header("Location: error.php?m=$error");
+    die();
 }
 
-// checking to see if the required inputs are there and, if not, ending the script
+//checking to see if the required inputs are there and, if not, ending the script
 if(!filter_has_var(INPUT_POST, 'category_id') ||
     !filter_has_var(INPUT_POST, 'item_name') ||
     !filter_has_var(INPUT_POST, 'item_price') ||
     !filter_has_var(INPUT_POST, 'description') ||
     !filter_has_var(INPUT_POST, 'image_url')) {
-    $error = "This service is currently unavailable. Please try again later.";
+    $error = "We are unable to create your item at this time. Please try again later.";
     header("Location: error.php?m=$error");
     die();
 }
-
-//include code from header.php and database.php
-require_once('includes/database.php');
 
 //retrieve user inputs from the form
 $category_id = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_NUMBER_INT)));
@@ -41,10 +39,10 @@ $item_price = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'item_pric
 $description = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'description', FILTER_UNSAFE_RAW)));
 $image_url = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'image_url', FILTER_UNSAFE_RAW)));
 
-// setting the other values
+//setting the other values
 $date_added = date('Y-m-d');
 
-// defining the insert query and executing it
+//defining the insert query and executing it
 $sql = "INSERT INTO items (item_id, category_id, date_added, item_name, item_price, description, image) 
         VALUES (NULL, $category_id, $date_added, $item_name, $item_price, $description, $image_url)";
 $query = @$conn->query($sql);
@@ -64,8 +62,10 @@ $query->close();
 $conn->close();
 
 // display the content on the page
-echo "Your item has been created. View it in the gallery below:<br>";
-echo "<a href='menu.php'>click here</a>";
-include 'includes/footer.php';
+//echo "Your item has been created. View it in the gallery below:<br>";
+//echo "<a href='menu.php'>click here</a>";
+//include 'includes/footer.php';
 
+$success = "Your item has been successfully created.";
+header("Location: success.php?m=$success");
 

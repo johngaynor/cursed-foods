@@ -28,7 +28,7 @@ if (!is_numeric($id)) {
 
 //if qty cannot be found, terminate script.
 if (!filter_has_var(INPUT_GET, 'qty')) {
-    $error = "Quantity not found. Operation cannot proceed.<br><br>";
+    $error = "Quantity not found. Operation cannot proceed.";
     header("Location: error.php?m=$error");
     die();
 }
@@ -36,7 +36,7 @@ if (!filter_has_var(INPUT_GET, 'qty')) {
 //retrieve qty and make sure it is a numeric, positive value.
 $qty = filter_input(INPUT_GET, 'qty', FILTER_SANITIZE_NUMBER_INT);
 if (!is_numeric($qty) || $qty < 0) {
-    $error = "Invalid quantity. Operation cannot proceed.<br><br>";
+    $error = "Invalid quantity. Operation cannot proceed.";
     header("Location: error.php?m=$error");
     die();
 }
