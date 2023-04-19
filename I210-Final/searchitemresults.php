@@ -138,7 +138,7 @@ if (!$query) {
 
 
                 echo "<div class='food'>";
-                echo "<img src='images/", $row['image'], "' alt='' />";
+                echo "<img src='", $row['image'], "' alt='' />";
                 echo "<div class='food-text'>";
                 echo "<h2>";
                 echo $new_name;

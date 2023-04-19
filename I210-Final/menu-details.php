@@ -72,7 +72,7 @@ if (!$query) {
             echo "</form>";
             echo "</div>";
             echo "</div>";
-            echo "<img src='images/", $row['image'], "' alt='' />";
+            echo "<img src='", $row['image'], "' alt='' />";
           }
 
         ?>

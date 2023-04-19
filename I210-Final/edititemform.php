@@ -80,7 +80,7 @@ while ($row = $query->fetch_assoc()) {
                 <button class="addBtn" type="button" onclick='window.location.href="menu-details.php?id=<?=$item_id?>"'>Cancel</button>
         </div>
     </div>
-    <img src='images/snickles.jpeg' />
+    <img src="<?= $image ?>" />
 
 </section>
     </form>

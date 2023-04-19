@@ -84,7 +84,7 @@ if (!$query) {
                 }
 
                 echo "<div class='food'>";
-                echo "<img src='images/", $row['image'], "' alt='' />";
+                echo "<img src='", $row['image'], "' alt='' />";
                 echo "<div class='food-text'>";
                 echo "<h2>", $row['item_name'], "</h2>";
                 echo "<h3 style='color: $category_color'>", $row['category_name'], "</h3>";
