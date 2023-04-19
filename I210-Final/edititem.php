@@ -3,6 +3,19 @@
 include 'includes/header.php';
 include 'includes/database.php';
 
+// check to see if the user has permission to access this page
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] !== 2) {
+        include 'includes/permissionerror.php';
+        include 'includes/footer.php';
+        exit();
+    }
+} else {
+    include 'includes/permissionerror.php';
+    include 'includes/footer.php';
+    exit();
+}
+
 // retrieving and setting variables for each thing
 $item_id = $name = $price = $category_id = $description = '';
 if (filter_has_var(INPUT_POST, 'item_id') || filter_has_var(INPUT_POST, 'name') ||

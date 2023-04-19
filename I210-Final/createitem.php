@@ -7,9 +7,15 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// checking to see if the user has permission to add items. Role 1 is regular users, 2 is admin.
-if ($_SESSION['role'] !== 2) {
-    echo "You do not have permissions to add a new item.";
+// check to see if the user has permission to access this page
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] !== 2) {
+        include 'includes/permissionerror.php';
+        include 'includes/footer.php';
+        exit();
+    }
+} else {
+    include 'includes/permissionerror.php';
     include 'includes/footer.php';
     exit();
 }

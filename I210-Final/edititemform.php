@@ -3,7 +3,7 @@
 include 'includes/header.php';
 include 'includes/database.php';
 
-// check to see if the user has access to this page
+// check to see if the user has permission to access this page
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] !== 2) {
         include 'includes/permissionerror.php';
