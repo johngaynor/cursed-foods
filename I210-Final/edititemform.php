@@ -1,8 +1,20 @@
 <?php
-
 // include the header and database
 include 'includes/header.php';
 include 'includes/database.php';
+
+// check to see if the user has access to this page
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] !== 2) {
+        include 'includes/permissionerror.php';
+        include 'includes/footer.php';
+        exit();
+    }
+} else {
+    include 'includes/permissionerror.php';
+    include 'includes/footer.php';
+    exit();
+}
 
 // handling errors for id
 if (!filter_has_var(INPUT_GET, 'id')) {
