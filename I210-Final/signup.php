@@ -52,9 +52,11 @@ if (session_status() == PHP_SESSION_NONE) {
 $_SESSION['login'] = $username;
 $_SESSION['name'] = "$firstname $lastname";
 $_SESSION['role'] = 2;
+$_SESSION['profile_picture'] = $profile_picture;
 
-//set login status to 3 since this is a new user.
-$_SESSION['login_status'] = 3;
+//set login status to 1 since a user is now logged in
+$_SESSION['login_status'] = 1;
 
-//redirect the user to the loginform.php page
-header('Location: loginform.php');
+//send to success page
+$success = "Your account has been successfully created.";
+header("Location: success.php?m=$success");
