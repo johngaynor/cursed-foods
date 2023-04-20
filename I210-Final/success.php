@@ -10,7 +10,7 @@ if (filter_has_var(INPUT_GET, 'm')) {
     $message = "Your action was successful. Feel free to continue using our site!";
 }
 ?>
-    <h1><?= $message ?></h1>
+    <h1 style="color: green"><?= $message ?></h1>
 <?php
 //include footer
 include 'includes/footer.php';

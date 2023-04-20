@@ -10,6 +10,6 @@ if (filter_has_var(INPUT_GET, 'm')) {
     $message = "Sorry, we're not quite sure what happened. Try again at a later time.";
 }
 ?>
-<h1><?= $message ?></h1>
+<h1 style="color: red"><?= $message ?></h1>
 <?php
 include 'includes/footer.php';
