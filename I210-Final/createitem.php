@@ -24,9 +24,9 @@ if (isset($_SESSION['role'])) {
 //checking to see if the required inputs are there and, if not, ending the script
 if(!filter_has_var(INPUT_POST, 'category_id') ||
     !filter_has_var(INPUT_POST, 'item_name') ||
-    !filter_has_var(INPUT_POST, 'item_price') ||
+    !filter_has_var(INPUT_POST, 'price') ||
     !filter_has_var(INPUT_POST, 'description') ||
-    !filter_has_var(INPUT_POST, 'image_url')) {
+    !filter_has_var(INPUT_POST, 'image')) {
     $error = "We are unable to create your item at this time. Please try again later.";
     header("Location: error.php?m=$error");
     die();
@@ -35,16 +35,22 @@ if(!filter_has_var(INPUT_POST, 'category_id') ||
 //retrieve user inputs from the form
 $category_id = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_NUMBER_INT)));
 $item_name = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'item_name', FILTER_UNSAFE_RAW)));
-$item_price = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'item_price', FILTER_SANITIZE_NUMBER_FLOAT)));
+$item_price = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION)));
 $description = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'description', FILTER_UNSAFE_RAW)));
-$image_url = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'image_url', FILTER_UNSAFE_RAW)));
+$image_url = $conn->real_escape_string(trim(filter_input(INPUT_POST, 'image', FILTER_UNSAFE_RAW)));
+
+//echo $category_id, $item_name, $item_price, $description, $image_url;
+echo $item_name;
 
 //setting the other values
 $date_added = date('Y-m-d');
+echo $date_added;
+//exit();
 
 //defining the insert query and executing it
-$sql = "INSERT INTO items (item_id, category_id, date_added, item_name, item_price, description, image) 
-        VALUES (NULL, $category_id, $date_added, $item_name, $item_price, $description, $image_url)";
+//$sql = "INSERT INTO items (item_id, category_id, date_added, item_name, item_price, description, image)
+//        VALUES (NULL, $category_id, $date_added, $item_name, $item_price, $description, $image_url)";
+$sql = "INSERT INTO items VALUES (NULL, $category_id, NULL, '$item_name', $item_price, '$description', '$image_url')";
 $query = @$conn->query($sql);
 
 //Handle insert errors
@@ -58,7 +64,6 @@ if (!$query) {
 }
 
 // close query/connection
-$query->close();
 $conn->close();
 
 $success = "Your item has been successfully created.";
