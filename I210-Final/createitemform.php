@@ -16,7 +16,16 @@ if (isset($_SESSION['role'])) {
     die();
 }
 
+//$img_thumb ="";
 ?>
+<script type="text/javascript">
+    $img_thumb = "";
+    function show_thumb() {
+        $img_thumb = document.getElementById('thumb-input').value;
+        // alert("this has been clicked: ");
+        // alert($img_thumb);
+    }
+</script>
 
     <!--this is the form for creating an item. It will submit to createitem.php and pass variables through POST.-->
     <div class="product-form-wrapper">
@@ -32,7 +41,9 @@ if (isset($_SESSION['role'])) {
             </div>
             <div class="add-holder">
                 <i class="fa-solid fa-image"></i>
-                <input type="text" placeholder="Product Image">
+                <input type="text" placeholder="Product Image" id="thumb-input" >
+                <button onclick='show_thumb()' type="button">Preview</button>
+                <img id="create-thumb" src=$img_thumb width="400px" />
             </div>
             <div class="add-holder">
                 <i class="fa-solid fa-tags"></i>
