@@ -103,7 +103,9 @@ if (!$query2) {
         <textarea name="description" rows="6" cols="70" style="margin-bottom: 60px"><?= $description ?></textarea>
         <div class="item-quantity">
                 <button class='addBtn' type='submit' style="margin-right: 10px">+ Save</button>
-                <button class="addBtn" type="button" onclick='window.location.href="menu-details.php?id=<?=$item_id?>"'>Cancel</button>
+                <button class="addBtn" type="button" onclick='window.location.href="menu-details.php?id=<?=$item_id?>"' style="margin-right: 10px">Cancel</button>
+                <button class="addBtn" type="button" onclick='window.location.href="deleteitem.php?id=<?=$item_id?>"'>Delete Item</button>
+<!--            need to add in a way to double check before deleting the item-->
         </div>
     </div>
     <img src="<?= $image ?>" />
