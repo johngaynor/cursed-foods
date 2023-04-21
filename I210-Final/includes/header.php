@@ -41,7 +41,7 @@ if (isset($_SESSION['cart'])) {
             <a id="logo" href="index.php">cursed<span>foods</span></a>
             <a href="">About Us</a>
             <a href="">Contact Us</a>
-            <form action="searchitemresults.php" method="get">
+            <form action="searchitemresults.php" method="get" style="margin: 0 10px">
                 <input type="text" name="terms" size="40" required />&nbsp;&nbsp;
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>

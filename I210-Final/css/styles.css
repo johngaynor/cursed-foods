@@ -60,6 +60,8 @@ nav form button {
     width: 150px;
     text-align: end;
     padding: 10px;
+    cursor: pointer;
+    margin-right: 50px;
 }
 
 .profile-container img  {
@@ -499,28 +501,24 @@ section.login {
     margin: 50px 0;
 }
 .user-profile .profile-info {
-    display: flex;
     margin-left: 50px;
+    display: flex;
 }
-.profile-icon {
+.profile-icon img {
     width: 130px;
     height: 130px;
-    object-fit: contain;
-    background-color: #D9D9D9;
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
 }
+
 .profile-details {
     margin-left: 16px;
     position: relative;
 }
+
 .profile-details i {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    right: -30px;
     font-size: 20px;
     cursor: pointer;
 }

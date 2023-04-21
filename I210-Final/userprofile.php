@@ -47,7 +47,7 @@ while ($row = $query->fetch_assoc()) {
 
 <section class="user-profile">
     <div class="profile-info">
-        <div class="profile-icon"><img src="<?= $profile_image ?>"</div>
+        <div class="profile-icon"><img src="<?= $profile_image ?>" /></div>
         <div class="profile-details">
             <i class="fa-solid fa-pen-to-square"></i>
             <h2><?= $fname ?> <?= $lname ?></h2>
@@ -65,14 +65,14 @@ while ($row = $query->fetch_assoc()) {
         <h6>YOU’RE ON YOUR WAY! You have spent $33.00. Spend another $50.00 to claim your reward</h6>
     </div>
 </section>
-<hr>
 <h1 class="history-header">Order History</h1>
-<hr>
 <section class="history">
+    <hr>
+    <?php ?>
     <table class="history">
         <thead>
         <tr>
-            <th class="table-header empty"></th>
+            <th class="table-header" style="text-align: left; padding-left: 50px; font-size: 30px; text-decoration: none">#ORDER NUMBER</th>
             <th class="table-header">Item</th>
             <th class="table-header">Category</th>
             <th class="table-header">Quantity</th>
@@ -83,11 +83,19 @@ while ($row = $query->fetch_assoc()) {
         <tr>
             <td><img src="" alt=""></td>
             <td>Anti-Sanwich</td>
-            <td>Cursed</td>
+            <td style="width: 150px">Cursed very very very very </td>
             <td>2</td>
             <td><p><span>$</span>22</p></td>
         </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2" style="font-size: 25px; font-weight: bold; text-align: right; padding-right: 40px" >Total: $12.99</td>
+        </tr>
         <tbody>
     </table>
-    <hr class="history-divider">
 </section>
+
+<?php
+include 'includes/footer.php';
