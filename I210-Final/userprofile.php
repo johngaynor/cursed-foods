@@ -18,20 +18,41 @@ if (isset($_SESSION['login'])) {
 }
 
 //define and execute sql data to retrieve user information
-$sql = "SELECT * FROM users WHERE user_name=$username";
+$sql = "SELECT * FROM users WHERE user_name='$username'";
 $query = @$conn->query($sql);
+
+//Handle selection errors
+if (!$query) {
+    $errno = $conn->errno;
+    $errmsg = $conn->error;
+    $error = "Selection failed with: ($errno) $errmsg";
+    $conn->close();
+    header("Location: error.php?m=$error");
+    die();
+}
+
+// retrieving all user info
+$user_id = $username = $fname = $lname = $email = $profile_image = '';
+while ($row = $query->fetch_assoc()) {
+    $user_id = $row['user_id'];
+    $username = $row['user_name'];
+    $fname = ucfirst($row['first_name']);
+    $lname = ucfirst($row['last_name']);
+    $email = $row['user_email'];
+    $profile_image = $row['profile_picture'];
+}
 
 
 ?>
 
 <section class="user-profile">
     <div class="profile-info">
-        <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
+        <div class="profile-icon"><img src="<?= $profile_image ?>"</div>
         <div class="profile-details">
             <i class="fa-solid fa-pen-to-square"></i>
-            <h2>John Doe</h2>
-            <p class="email">johndoe123@gmail.com</p>
-            <p>User ID: 1</p>
+            <h2><?= $fname ?> <?= $lname ?></h2>
+            <p><?= $username ?></p>
+            <p class="email"><?= $email ?></p>
         </div>
     </div>
     <div class="rewards">
