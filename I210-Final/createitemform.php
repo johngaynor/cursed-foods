@@ -40,12 +40,22 @@ if (isset($_SESSION['role'])) {
                 <select name="category_id" style="width: 100%; height: 50px" required>
                     <option selected="selected" disabled>Select Category</option>
                     <?php
+                    // define and execute sql query to retrieve all categories
                     $sql = "SELECT * FROM categories";
                     $query = @$conn->query($sql);
                     while ($row = $query->fetch_assoc()) {
                         echo "<option value='", $row['category_id'], "'>", $row['category_name'], "</option>";
                     }
-                    // need to come back in and clean this up later
+
+                    //Handle selection errors
+                    if (!$query) {
+                        $errno = $conn->errno;
+                        $errmsg = $conn->error;
+                        $error = "Selection failed with: ($errno) $errmsg";
+                        $conn->close();
+                        header("Location: error.php?m=$error");
+                        die();
+                    }
                     ?>
                 </select>
             </div>
