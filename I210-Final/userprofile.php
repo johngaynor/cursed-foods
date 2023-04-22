@@ -67,34 +67,72 @@ while ($row = $query->fetch_assoc()) {
 </section>
 <h1 class="history-header">Order History</h1>
 <section class="history">
-    <hr>
-    <?php ?>
-    <table class="history">
-        <thead>
-        <tr>
-            <th class="table-header" style="text-align: left; padding-left: 50px; font-size: 30px; text-decoration: none">#ORDER NUMBER</th>
-            <th class="table-header">Item</th>
-            <th class="table-header">Category</th>
-            <th class="table-header">Quantity</th>
-            <th class="table-header">Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><img src="" alt=""></td>
-            <td>Anti-Sanwich</td>
-            <td style="width: 150px">Cursed very very very very </td>
-            <td>2</td>
-            <td><p><span>$</span>22</p></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="2" style="font-size: 25px; font-weight: bold; text-align: right; padding-right: 40px" >Total: $12.99</td>
-        </tr>
-        <tbody>
-    </table>
+    <?php
+    // retrieving all user orders
+    $sql2 = "SELECT * FROM orders WHERE user_id=$user_id";
+    $query2 = @$conn->query($sql2);
+
+    while ($row = $query2->fetch_assoc()) {
+        $order_id = $row['order_id'];
+        echo "<hr>";
+        echo "<table class='history'><thead><tr>";
+        echo "<th class='table-header' style='text-align: left; padding-left: 50px; font-size: 30px; text-decoration: none'>#", $row['order_id'], "</th>";
+        echo "<th class='table-header'>Item</th><th class='table-header'>Category</th><th class='table-header'>Quantity</th><th class='table-header'>Price</th></tr></thead><tbody>";
+
+        // insert code for individual rows
+        $sql3 = "SELECT item_id, item_qty FROM orderDetails WHERE order_id=$order_id";
+        $query3 = @$conn->query($sql3);
+
+        while ($row2 = $query3->fetch_assoc()) {
+            $item_id = $row2['item_id'];
+            $sql4 = "SELECT item_name, item_price, image, category_id FROM items WHERE item_id=$item_id";
+            $query4 = @$conn->query($sql4);
+
+            echo "<tr>";
+            $item_price = 0;
+            while ($row3 = $query4->fetch_assoc()) {
+                $item_price = $row3['item_price'];
+                echo "<td><img src='", $row3['image'],  "' style='margin: 30px 0 30px 50px' /></td>";
+                echo "<td>", $row3['item_name'], "</td>";
+                echo "<td>", $row3['category_id'], "</td>";
+            }
+            echo "<td>", $row2['item_qty'], "</td>";
+            $item_total = ($item_price * $row2['item_qty']);
+            echo "<td>$", $item_total, "</td>";
+            echo "</tr>";
+        }
+
+        echo "<tr><td></td><td></td><td></td>";
+        echo "<td colspan='2' style='font-size: 25px; font-weight: bold; text-align: right; padding-right: 40px' >Total: $", $row['total_price'], "</td>";
+        echo " </tr></tbody></table>";
+    }
+    ?>
+<!--    <table class='history'>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th class="table-header" style="text-align: left; padding-left: 50px; font-size: 30px; text-decoration: none">#ORDER NUMBER</th>-->
+<!--            <th class='table-header'>Item</th>-->
+<!--            <th class='table-header'>Category</th>-->
+<!--            <th class='table-header'>Quantity</th>-->
+<!--            <th class='table-header'>Price</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr>-->
+<!--            <td><img src="" alt=""></td>-->
+<!--            <td>Anti-Sanwich</td>-->
+<!--            <td style="width: 150px">Cursed very very very very </td>-->
+<!--            <td>2</td>-->
+<!--            <td>$22</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td></td>-->
+<!--            <td></td>-->
+<!--            <td></td>-->
+<!--            <td colspan='2' style='font-size: 25px; font-weight: bold; text-align: right; padding-right: 40px' >Total: $12.99</td>-->
+<!--        </tr>-->
+<!--        <tbody>-->
+<!--    </table>-->
 </section>
 
 <?php
