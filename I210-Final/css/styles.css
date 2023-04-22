@@ -535,10 +535,10 @@ p.email {
     color: #7371FC;
     font-size: 12px;
 }
-.reward-bar {
+.reward-bar-holder {
     width: 500px;
     height: 40px;
-    background-color: #7371FC;
+    background-color: lightgrey;
     border-radius: 4px;
 }
 .history-header {

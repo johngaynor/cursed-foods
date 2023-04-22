@@ -42,7 +42,20 @@ while ($row = $query->fetch_assoc()) {
     $profile_image = $row['profile_picture'];
 }
 
+// retrieving all user orders
+$sql2 = "SELECT * FROM orders WHERE user_id=$user_id";
+$query2 = @$conn->query($sql2);
 
+$total_spent = 0;
+while ($row = $query2->fetch_assoc()) {
+    $total_spent += $row['total_price'];
+}
+
+
+$total_remaining = ($total_spent - 50);
+while ($total_remaining > 50) {
+    $total_remaining -= 50;
+}
 ?>
 
 <section class="user-profile">
@@ -59,10 +72,10 @@ while ($row = $query->fetch_assoc()) {
         <h2>My Cursed Food Rewards</h2>
         <a href="aboutus.php">About cursed food rewards</a>
         <div class="reward-bar-holder">
-            <div class="reward-bar"></div>
+            <div style="background-color: #7371FC; width: <?= $total_remaining / 50 * 500 ?>px; height: 100%"></div>
         </div>
         <h4>You're on your way!</h4>
-        <h6>YOU’RE ON YOUR WAY! You have spent $33.00. Spend another $50.00 to claim your reward</h6>
+        <h6>YOU’RE ON YOUR WAY! You have spent $<?= $total_spent ?>. Spend another $<?= 50 - $total_remaining ?> to claim your reward</h6>
     </div>
 </section>
 <h1 class="history-header">Order History</h1>
@@ -72,6 +85,7 @@ while ($row = $query->fetch_assoc()) {
     $sql2 = "SELECT * FROM orders WHERE user_id=$user_id";
     $query2 = @$conn->query($sql2);
 
+  // looping through all orders
     while ($row = $query2->fetch_assoc()) {
         $order_id = $row['order_id'];
         echo "<hr>";
