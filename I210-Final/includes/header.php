@@ -39,7 +39,7 @@ if (isset($_SESSION['cart'])) {
         <nav>
             <a id="menu" href="menu.php">Menu</a>
             <a id="logo" href="index.php">cursed<span>foods</span></a>
-            <a href="">About Us</a>
+            <a href="about.php">About Us</a>
             <a href="contact.php">Contact Us</a>
             <form action="searchitemresults.php" method="get" style="margin: 0 10px">
                 <input type="text" name="terms" size="40" required />&nbsp;&nbsp;
