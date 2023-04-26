@@ -41,12 +41,13 @@ while ($row = $query->fetch_assoc()) {
     $email = $row['user_email'];
     $password = $row['password'];
     $image = $row['profile_picture'];
+    $role = $row['role'];
 }
 
 ?>
     <section class="create">
         <h1 class="createHeader">Edit your account information:</h1>
-        <form action='edituser.php' method="post">
+        <form action='edituser.php?id=<?= $user_id ?>&role=<?= $role ?>' method="post">
             <div class="create-form">
                 <div class="login-inputs">
                     <i class="fa-solid fa-user"></i>

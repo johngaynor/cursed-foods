@@ -70,7 +70,7 @@ while ($total_remaining > 50) {
     </div>
     <div class="rewards">
         <h2>My Cursed Food Rewards</h2>
-        <a href="aboutus.php">About cursed food rewards</a>
+        <a href="about.php">About cursed food rewards</a>
         <div class="reward-bar-holder">
             <div style="background-color: #7371FC; width: <?= $total_remaining / 50 * 500 ?>px; height: 100%"></div>
         </div>
