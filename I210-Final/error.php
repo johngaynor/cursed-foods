@@ -10,6 +10,16 @@ if (filter_has_var(INPUT_GET, 'm')) {
     $message = "Sorry, we're not quite sure what happened. Try again at a later time.";
 }
 ?>
-<h1 style="color: red"><?= $message ?></h1>
+
+    <div class="site-wrapper">
+        <div class="error">
+            <h1><?= $message ?></h1>
+            <h2>Error Code Here</h2>
+            <div class="error-images">
+                <img class="rick" src="images/rick.png" alt="">
+                <img class="qr" src="images/qr.png" alt="">
+            </div>
+        </div>
+    </div>
 <?php
-include 'includes/footer.php';
+include ("includes/footer.php");
