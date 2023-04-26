@@ -29,10 +29,6 @@ include 'includes/database.php';
             <i class="fa-solid fa-lock"></i>
             <input type="password" placeholder="Password" name="password" required />
         </div>
-<!--        <div class="login-inputs">-->
-<!--            <i class="fa-solid fa-calendar-days"></i>-->
-<!--            <input type="text" placeholder="Birthday" />-->
-<!--        </div>-->
         <div class="login-inputs">
             <i class="fa-solid fa-image"></i>
             <input type="text" placeholder="Profile Picture (url)" name="profile_picture" />

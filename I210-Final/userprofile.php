@@ -62,7 +62,7 @@ while ($total_remaining > 50) {
     <div class="profile-info">
         <div class="profile-icon"><img src="<?= $profile_image ?>" /></div>
         <div class="profile-details">
-            <i class="fa-solid fa-pen-to-square"></i>
+            <a href="edituserform.php"><i class="fa-solid fa-pen-to-square"></i></a>
             <h2><?= $fname ?> <?= $lname ?></h2>
             <p><?= $username ?></p>
             <p class="email"><?= $email ?></p>
