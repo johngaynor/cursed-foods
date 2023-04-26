@@ -18,7 +18,7 @@ if (isset($_SESSION['login'])) {
 }
 
 //defining and executing query to retrieve current user information
-$sql = "SELECT * FROM users WHERE username='$username'";
+$sql = "SELECT * FROM users WHERE user_name='$username'";
 $query = @$conn->query($sql);
 
 //Handle selection errors
@@ -42,7 +42,6 @@ while ($row = $query->fetch_assoc()) {
     $password = $row['password'];
     $image = $row['profile_picture'];
 }
-
 
 ?>
     <section class="create">
@@ -73,7 +72,10 @@ while ($row = $query->fetch_assoc()) {
                     <i class="fa-solid fa-image"></i>
                     <input type="text" placeholder="Profile Picture (url)" name="profile_picture" value="<?= $image ?>" />
                 </div>
-                <button class="signUpBtn" type="submit">Sign Up</button>
+                <div>
+                <button class="signUpBtn" type="submit">Save Changes</button>
+                <button class="signUpBtn" type="button" onclick="window.location.href='userprofile.php'">Cancel</button>
+                </div>
             </div>
         </form>
     </section>
