@@ -14,7 +14,7 @@ if (filter_has_var(INPUT_GET, 'm')) {
     <div class="site-wrapper">
         <div class="error">
             <h1><?= $message ?></h1>
-            <h2>Error Code Here</h2>
+            <h2>Error</h2>
             <div class="error-images">
                 <img class="rick" src="images/rick.png" alt="">
                 <img class="qr" src="images/qr.png" alt="">

@@ -819,3 +819,74 @@ form {
     margin-right: 16px;
 }
 /*CONTACT contact.php*/
+
+/*ERROR error.php*/
+.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*align-items: center;*/
+}
+.error h1 {
+    font-weight: bold;
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+.error h2 {
+    color: #D64040;
+    font-size: 36px;
+}
+.error-images {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.error-images .rick {
+    width: 600px;
+    height: auto;
+    margin-left: 310px;
+}
+.error-images .qr {
+    width: 100px;
+    height: 100px;
+}
+/*ERROR error.php*/
+
+/*SUCCESS success.php*/
+.success-wrapper {
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+.success-wrapper p {
+    color: #7371FC;
+    font-weight: 700;
+    margin-bottom: 60px;
+    font-size: 24px;
+}
+.success-wrapper p span{
+    color: black;
+    font-weight: 700;
+}
+.success-wrapper i {
+    color: #43D640;
+    font-size: 220px;
+    margin-bottom: 36px;
+}
+.success-wrapper h1 {
+    font-size: 48px;
+}
+.success-wrapper h2 {
+    color: #43D640;
+    font-size: 36px;
+    margin-bottom: 24px;
+}
+.success-wrapper a {
+    color: #7371FC;
+    margin-bottom: 50px;
+}
+/*SUCCESS success.php*/

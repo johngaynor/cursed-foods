@@ -121,32 +121,6 @@ while ($total_remaining > 50) {
         echo " </tr></tbody></table>";
     }
     ?>
-<!--    <table class='history'>-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th class="table-header" style="text-align: left; padding-left: 50px; font-size: 30px; text-decoration: none">#ORDER NUMBER</th>-->
-<!--            <th class='table-header'>Item</th>-->
-<!--            <th class='table-header'>Category</th>-->
-<!--            <th class='table-header'>Quantity</th>-->
-<!--            <th class='table-header'>Price</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr>-->
-<!--            <td><img src="" alt=""></td>-->
-<!--            <td>Anti-Sanwich</td>-->
-<!--            <td style="width: 150px">Cursed very very very very </td>-->
-<!--            <td>2</td>-->
-<!--            <td>$22</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td colspan='2' style='font-size: 25px; font-weight: bold; text-align: right; padding-right: 40px' >Total: $12.99</td>-->
-<!--        </tr>-->
-<!--        <tbody>-->
-<!--    </table>-->
 </section>
 
 <?php

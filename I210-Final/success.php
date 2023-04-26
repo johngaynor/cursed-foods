@@ -7,7 +7,9 @@ $message = '';
 if (filter_has_var(INPUT_GET, 'm')) {
     $message = trim(filter_input(INPUT_GET, 'm', FILTER_UNSAFE_RAW));
 } else {
-    $message = "Your action was successful. Feel free to continue using our site!";
+    $error = "You are not logged into an account. Please login before attempting to access your profile.";
+    header("Location: error.php?m=$error");
+    die();
 }
 ?>
     <div class="site-wrapper">
@@ -15,7 +17,7 @@ if (filter_has_var(INPUT_GET, 'm')) {
             <p>cursed<span>foods</span></p>
             <i class="fa-regular fa-circle-check"></i>
             <h1><?= $message ?></h1>
-            <h2>Success Code Here</h2>
+            <h2>Success!</h2>
             <a href="index.php">Return Home</a>
         </div>
 
