@@ -63,12 +63,6 @@ foreach(array_keys($cart) as $item_id) {
 
 // empty cart
 $_SESSION['cart'] = [];
-?>
 
-    <h2>Thank you for shopping with us!</h2>
-
-
-<?php
-include ('includes/footer.php');
-$conn->close();
-?>
+$success = "Your order has been placed. Thank you for shopping with us!";
+header("Location: success.php?m=$success");
