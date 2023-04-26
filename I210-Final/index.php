@@ -22,7 +22,7 @@ include 'includes/header.php';
 </section>
 <section class="menu-preview">
     <div class="menu-item">
-        <div class="menu-img">PLACEHOLDER</div>
+        <div class="menu-img"><img src="images/pickled_nutella.jpeg" alt="" /></div>
         <div class="menu-text">
             <h2>Looking for amazing flavors?</h2>
             <p>
@@ -43,10 +43,10 @@ include 'includes/header.php';
                 tortor at risus. Quam vulputate dignissim suspendisse in est ante.
             </p>
         </div>
-        <div class="menu-img">PLACEHOLDER</div>
+        <div class="menu-img"><img src="images/mustard_icecream.jpeg" alt="" /></div>
     </div>
     <div class="menu-item">
-        <div class="menu-img">PLACEHOLDER</div>
+        <div class="menu-img"><img src="images/bacon_pickles.jpeg" alt="" /></div>
         <div class="menu-text">
             <h2>Testimonials</h2>
             <p>
