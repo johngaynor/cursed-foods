@@ -11,17 +11,16 @@ if (isset($_SESSION['login_status'])) {
 
 // if successful login
 if ($login_status == 1) {
-    echo "<p>You are logged in as " . $_SESSION['login'] . ".</p>";
-    echo "<a href='logout.php'>Log out</a><br />";
-    include ('includes/footer.php');
+    $username = $_SESSION['login'];
+    $success = "You have successfully logged in as $username.";
+    header("Location: success.php?m=$success");
     exit();
 }
 
 // if new user
 if ($login_status == 3) {
-    echo "<p>Thank you for registering with us. Your account has been created.</p>";
-    echo "<a href='logout.php'>Log out</a><br />";
-    include ('includes/footer.php');
+    $success = "You have successfully registered your account!";
+    header("Location: success.php?m=$success");
     exit();
 }
 
